@@ -5,11 +5,15 @@ import List from "../atoms/List";
 import InputTask from "../molecules/InputTask";
 
 function TodoList() {
-    const [list, setList] = useState([]);
+    const [list, setList] = useState([{
+        task:'Add tasks',
+        isComplete:false
+    }]);
+    // const [pendingTask, setPendingTask] = useState('');
 
     function addList(inputTask){
         if(inputTask !==''){
-            setList([...list, inputTask])
+            setList([...list, {task: inputTask, isComplete:false}])
         }
     }
 
@@ -26,7 +30,7 @@ function TodoList() {
             {
                 list.map((listItem,i)=>{
                     return(
-                        <List key={i} index={i} item={listItem} deleteItem={deleteItem} />
+                        <List key={i} index={i} item={listItem.task} deleteItem={deleteItem} />
                     )
                 })
             }
