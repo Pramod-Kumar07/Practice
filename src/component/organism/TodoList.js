@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Heading from "../atoms/Heading";
 import styles from "./TodoList.module.css";
 import List from "../atoms/List";
@@ -9,7 +9,11 @@ function TodoList() {
         task:'Add tasks',
         isComplete:false
     }]);
-    // const [pendingTask, setPendingTask] = useState('');
+    const [pendingTask, setPendingTask] = useState('');
+
+    useEffect(()=>{
+        setPendingTask(list.filter((task)=> !task.isComplete).length)
+    },[list])
 
     function addList(inputTask){
         if(inputTask !==''){
@@ -20,17 +24,23 @@ function TodoList() {
     function deleteItem(key){
         let newList= [...list];
         newList.splice(key,1);
+        setList([...newList]);
+    }
+
+    function completion(i, value) {
+        let newList=[...list];
+        newList[i].isComplete=value;
         setList([...newList])
     }
 
     return(
         <div className={styles.container}>
-        <Heading numTask={list.length}/>
+        <Heading numTask={pendingTask}/>
         <div>
             {
                 list.map((listItem,i)=>{
                     return(
-                        <List key={i} index={i} item={listItem.task} deleteItem={deleteItem} />
+                        <List key={i} index={i} item={listItem.task} deleteItem={deleteItem} completion={completion} check={listItem.isComplete} />
                     )
                 })
             }
