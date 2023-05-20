@@ -1,12 +1,10 @@
-
+import LocalStorage from './component/LocalStorage';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-      </header>
+      <LocalStorage/>
     </div>
   );
 }
