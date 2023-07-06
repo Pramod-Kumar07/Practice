@@ -5,7 +5,7 @@ function TableGenerator() {
 
     const[number, setNumber] = useState('');
 
-    const array = Array.from({length: 10}, (e,i)=> i+1);
+    const array = Array.from({length: 10}, (e,i)=> e=i+1);
 
     
   return (
@@ -23,7 +23,7 @@ function TableGenerator() {
 
         {
             array.map((e) => { 
-                return number>0 && 
+                return number && 
                     <div className={styles.table}>
                         {e*number}
                     </div>
