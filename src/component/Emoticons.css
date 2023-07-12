@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.searchBar{
+    border: 2px solid purple;
+    border-radius: 0.5rem;
+    color: blueviolet;
+    width: 40%;
+    height: 3rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem ;
+    margin: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+
